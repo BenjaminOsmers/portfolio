@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Markmap</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			#mindmap {
+				display: block;
+				width: 100vw;
+				height: 100vh;
+			}
+		</style>
+	</head>
+	<body>
+		<svg id="mindmap"></svg>
+		<script src="https://cdn.jsdelivr.net/npm/d3@6.7.0"></script>
+		<script src="https://cdn.jsdelivr.net/npm/markmap-view@0.2.7"></script>
+		<script>
+			;((c, d, p) => {
+				const { Markmap: g } = c()
+				window.mm = g.create('svg#mindmap', d == null ? void 0 : d(), p)
+			})(
+				() => window.markmap,
+				(c) => (
+					(c = c || window.d3),
+					{
+						color: (
+							(N) => (E) =>
+								N(E.p.i)
+						)(c.scaleOrdinal(c.schemeCategory10)),
+					}
+				),
+				{
+					t: 'heading',
+					d: 1,
+					p: { lines: [0, 1] },
+					v: 'Root',
+					c: [
+						{
+							t: 'heading',
+							d: 2,
+							p: { lines: [1, 2] },
+							v: 'Apps',
+							c: [
+								{ t: 'heading', d: 3, p: { lines: [2, 3] }, v: 'api' },
+								{ t: 'heading', d: 3, p: { lines: [3, 4] }, v: 'client' },
+							],
+						},
+						{
+							t: 'heading',
+							d: 2,
+							p: { lines: [4, 5] },
+							v: 'Libs',
+							c: [
+								{
+									t: 'heading',
+									d: 3,
+									p: { lines: [5, 6] },
+									v: 'api',
+									c: [
+										{ t: 'heading', d: 4, p: { lines: [6, 7] }, v: 'shell' },
+										{
+											t: 'heading',
+											d: 4,
+											p: { lines: [7, 8] },
+											v: 'feature',
+											c: [
+												{
+													t: 'heading',
+													d: 5,
+													p: { lines: [8, 9] },
+													v: 'api',
+													c: [
+														{
+															t: 'heading',
+															d: 6,
+															p: { lines: [9, 10] },
+															v: 'feature',
+															c: [
+																{ t: 'list_item', d: 8, p: { lines: [10, 11], index: 1 }, v: '1. Resolvers' },
+																{ t: 'list_item', d: 8, p: { lines: [11, 12], index: 2 }, v: '2. Module' },
+															],
+														},
+														{ t: 'heading', d: 6, p: { lines: [12, 13] }, v: 'Shared', c: [{ t: 'list_item', d: 8, p: { lines: [13, 14], index: 1 }, v: '1. Entities' }] },
+													],
+												},
+												{
+													t: 'heading',
+													d: 5,
+													p: { lines: [14, 15] },
+													v: 'service',
+													c: [
+														{
+															t: 'heading',
+															d: 6,
+															p: { lines: [15, 16] },
+															v: 'commands',
+															c: [
+																{ t: 'list_item', d: 8, p: { lines: [16, 17], index: 1 }, v: '1. Commands' },
+																{ t: 'list_item', d: 8, p: { lines: [17, 18], index: 2 }, v: '2. Command Handlers' },
+															],
+														},
+														{
+															t: 'heading',
+															d: 6,
+															p: { lines: [18, 19] },
+															v: 'queries',
+															c: [
+																{ t: 'list_item', d: 8, p: { lines: [19, 20], index: 1 }, v: '1. Queries' },
+																{ t: 'list_item', d: 8, p: { lines: [20, 21], index: 2 }, v: '2. Query Handlers' },
+															],
+														},
+														{ t: 'heading', d: 6, p: { lines: [21, 22] }, v: 'services' },
+													],
+												},
+												{ t: 'heading', d: 5, p: { lines: [22, 23] }, v: 'repository' },
+											],
+										},
+										{
+											t: 'heading',
+											d: 4,
+											p: { lines: [23, 24] },
+											v: 'shared',
+											c: [{ t: 'heading', d: 5, p: { lines: [24, 25] }, v: 'services', c: [{ t: 'list_item', d: 7, p: { lines: [25, 26], index: 1 }, v: '1. prisma service' }] }],
+										},
+									],
+								},
+								{
+									t: 'heading',
+									d: 3,
+									p: { lines: [26, 27] },
+									v: 'client',
+									c: [
+										{
+											t: 'heading',
+											d: 4,
+											p: { lines: [27, 28] },
+											v: 'feature',
+											c: [
+												{ t: 'heading', d: 5, p: { lines: [28, 29] }, v: 'pages' },
+												{ t: 'heading', d: 5, p: { lines: [29, 30] }, v: 'components' },
+											],
+										},
+										{
+											t: 'heading',
+											d: 4,
+											p: { lines: [30, 31] },
+											v: 'shared',
+											c: [
+												{
+													t: 'heading',
+													d: 5,
+													p: { lines: [31, 32] },
+													v: 'store',
+													c: [
+														{ t: 'heading', d: 6, p: { lines: [32, 33] }, v: 'constants' },
+														{ t: 'heading', d: 6, p: { lines: [33, 34] }, v: 'reducers' },
+														{ t: 'heading', d: 6, p: { lines: [34, 35] }, v: 'actions' },
+														{ t: 'heading', d: 6, p: { lines: [35, 36] }, v: 'selectors' },
+													],
+												},
+											],
+										},
+									],
+								},
+							],
+						},
+						{
+							t: 'heading',
+							d: 2,
+							p: { lines: [36, 37] },
+							v: 'Prisma',
+							c: [
+								{ t: 'heading', d: 3, p: { lines: [37, 38] }, v: 'schema' },
+								{ t: 'heading', d: 3, p: { lines: [38, 39] }, v: 'seeder scripts' },
+							],
+						},
+					],
+				}
+			)
+		</script>
+	</body>
+</html>
