@@ -25,6 +25,12 @@ const MindMaps = () => {
             <p>Summmary of requirements for Demo 2.</p>
           </a>
         </div>
+        <div className={styles.grid}>
+          <a href="./nx.html" className={styles.card}>
+            <h2>Nx Commands &rarr;</h2>
+            <p>Summmary of commands for Nx.</p>
+          </a>
+        </div>
       </main>
     </div>
   );
